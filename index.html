@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💕 Happy Birthday My Love! 💕</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Happy Birthday Nanduu Maa ❤️ My Forever Love</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -15,22 +15,22 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e);
-            background-size: 400% 400%;
-            animation: loveGradient 12s ease infinite;
-            min-height: 100vh;
             overflow-x: hidden;
+            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fecfef, #a8edea);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
+            height: 100vh;
             position: relative;
         }
 
-        @keyframes loveGradient {
+        @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Heart particles */
-        .hearts {
+        /* Floating Elements */
+        .floating-elements {
             position: fixed;
             top: 0;
             left: 0;
@@ -40,154 +40,122 @@
             z-index: 1;
         }
 
-        .heart {
+        .float-item {
             position: absolute;
-            color: #ff6b9d;
-            font-size: 20px;
-            animation: floatHearts 8s linear infinite;
+            animation: floatUp 10s infinite linear;
+            opacity: 0.7;
         }
 
-        @keyframes floatHearts {
+        @keyframes floatUp {
             0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 1;
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
             }
+            10% { opacity: 1; transform: scale(1); }
+            90% { opacity: 1; }
             100% {
-                transform: translateY(-100px) rotate(360deg);
+                transform: translateY(-100px) rotate(360deg) scale(1.2);
                 opacity: 0;
             }
         }
 
+        /* Main Container */
         .container {
-            position: relative;
-            z-index: 2;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-        }
-
-        .love-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(25px);
-            border-radius: 40px;
-            padding: 60px 40px;
-            box-shadow: 0 40px 80px rgba(255, 107, 157, 0.4);
-            text-align: center;
+            align-items: center;
+            padding: 20px;
             position: relative;
-            overflow: hidden;
-            border: 2px solid rgba(255, 107, 157, 0.3);
+            z-index: 10;
         }
 
-        .love-card::before {
-            content: '💕';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 60px;
-            animation: heartBeat 2s ease-in-out infinite;
-            z-index: 0;
-        }
-
-        .love-card::after {
-            content: '💕';
-            position: absolute;
-            bottom: -20px;
-            left: -20px;
-            font-size: 60px;
-            animation: heartBeat 2s ease-in-out infinite 1s;
-            z-index: 0;
-        }
-
-        @keyframes heartBeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+        /* Photo Upload */
+        .photo-section {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out;
         }
 
         .photo-frame {
-            width: 220px;
-            height: 220px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
-            margin: 0 auto 30px;
-            position: relative;
+            border: 10px solid rgba(255,255,255,0.8);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
             overflow: hidden;
-            border: 10px solid transparent;
-            background: linear-gradient(45deg, #ff6b9d, #c44569, #ff6b9d) border-box;
-            -webkit-mask: radial-gradient(ellipse 55% 55% at 50% 50%, #fff 0%, transparent 70%);
-            mask: radial-gradient(ellipse 55% 55% at 50% 50%, #fff 0%, transparent 70%);
+            margin: 0 auto 20px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
         }
 
-        .love-photo {
+        .photo-frame:hover {
+            transform: scale(1.08) rotate(5deg);
+            box-shadow: 0 40px 80px rgba(255,107,157,0.4);
+        }
+
+        .photo-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
         }
 
-        .photo-frame:hover .love-photo {
-            transform: scale(1.1);
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff6b9d, #ffd93d);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .name-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 4.2em;
-            font-weight: 700;
-            background: linear-gradient(45deg, #ff6b9d, #c44569, #ff9a9e);
+            font-size: 4em;
+            background: linear-gradient(45deg, #ff6b9d, #ffd93d, #ff6b9d);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
-            animation: loveGlow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes loveGlow {
-            from { filter: drop-shadow(0 0 15px rgba(255,107,157,0.6)); }
-            to { filter: drop-shadow(0 0 30px rgba(255,149,158,0.8)); }
-        }
-
-        .birthday-greeting {
-            font-size: 1.6em;
-            color: #333;
             margin-bottom: 10px;
-            font-weight: 600;
+            animation: nameGlow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(255,107,157,0.6);
         }
 
-        .love-subtitle {
-            font-size: 1.3em;
-            color: #ff6b9d;
-            font-weight: 400;
-            margin-bottom: 40px;
-            font-style: italic;
+        @keyframes nameGlow {
+            0% { filter: drop-shadow(0 0 10px #ff6b9d); }
+            100% { filter: drop-shadow(0 0 20px #ffd93d); }
         }
 
-        .romantic-wishes {
+        /* Message Cards */
+        .messages-container {
             max-width: 700px;
-            margin: 0 auto 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
 
-        .wish-heart {
-            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #ff9a9e 100%);
-            color: white;
-            padding: 30px 25px;
-            margin: 25px 0;
+        .message-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
             border-radius: 25px;
-            font-size: 1.25em;
-            line-height: 1.7;
-            box-shadow: 0 20px 40px rgba(255,107,157,0.4);
-            transform: translateY(30px);
-            opacity: 0;
-            animation: heartSlide 1s ease-out forwards;
-            position: relative;
+            padding: 35px;
             cursor: pointer;
+            border: 3px solid transparent;
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
             overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .wish-heart::before {
+        .message-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -195,289 +163,349 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s;
+            transition: left 0.6s;
         }
 
-        .wish-heart:hover::before {
+        .message-card:hover::before {
             left: 100%;
         }
 
-        .wish-heart:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 30px 60px rgba(255,107,157,0.6);
+        .message-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: #ff6b9d;
+            box-shadow: 0 30px 60px rgba(255,107,157,0.3);
         }
 
-        .wish-heart:nth-child(1) { animation-delay: 0.3s; }
-        .wish-heart:nth-child(2) { animation-delay: 0.6s; }
-        .wish-heart:nth-child(3) { animation-delay: 0.9s; }
-        .wish-heart:nth-child(4) { animation-delay: 1.2s; }
-        .wish-heart:nth-child(5) { animation-delay: 1.5s; }
-
-        @keyframes heartSlide {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .big-heart {
-            font-size: 6em;
-            margin: 40px 0;
-            animation: bigHeartBeat 2.5s ease-in-out infinite;
-        }
-
-        @keyframes bigHeartBeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-        }
-
-        .promise-section {
-            background: linear-gradient(135deg, rgba(255,107,157,0.2), rgba(255,149,158,0.2));
-            padding: 30px;
-            border-radius: 20px;
-            margin: 40px 0;
-            border: 2px dashed #ff6b9d;
-        }
-
-        .promise-title {
+        .message-header {
             font-family: 'Dancing Script', cursive;
             font-size: 2.2em;
-            color: #c44569;
-            margin-bottom: 15px;
+            color: #e91e63;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
         }
 
-        .countdown-love {
-            font-size: 1.4em;
-            color: #ff6b9d;
-            font-weight: 700;
-            margin: 20px 0;
-            animation: pulse 2s infinite;
+        .message-card.open .message-header {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        .message-content {
+            font-size: 1.3em;
+            color: #333;
+            line-height: 1.8;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            opacity: 0;
         }
 
-        .music-love {
+        .message-card.open .message-content {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 20px;
+        }
+
+        .message-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            transition: transform 0.3s ease;
+        }
+
+        .message-card.open .message-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Control Buttons */
+        .controls {
             position: fixed;
-            top: 30px;
-            right: 30px;
-            background: rgba(255,255,255,0.95);
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .control-btn {
+            background: rgba(255,255,255,0.9);
             border: none;
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            font-size: 1.8em;
+            padding: 12px 20px;
+            border-radius: 25px;
             cursor: pointer;
-            box-shadow: 0 15px 35px rgba(255,107,157,0.4);
-            z-index: 1000;
+            font-size: 1em;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
         }
 
-        .music-love:hover {
-            transform: scale(1.15);
-            background: linear-gradient(45deg, #ff6b9d, #c44569);
-            color: white;
+        .control-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
-        .share-love {
-            background: linear-gradient(135deg, #ff6b9d, #c44569);
-            color: white;
-            border: none;
-            padding: 18px 50px;
-            border-radius: 50px;
-            font-size: 1.3em;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 30px;
-            transition: all 0.4s ease;
-            box-shadow: 0 15px 40px rgba(255,107,157,0.5);
-            font-family: 'Poppins', sans-serif;
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
         }
 
-        .share-love:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(255,107,157,0.7);
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b9d;
+            animation: confettiFall 3s linear infinite;
         }
 
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .love-card {
-                padding: 40px 25px;
-                margin: 10px;
-            }
-            .name-title {
-                font-size: 3em;
-            }
-            .wish-heart {
-                font-size: 1.1em;
-                padding: 25px 20px;
-            }
+            .photo-frame { width: 220px; height: 220px; }
+            .name-title { font-size: 3em; }
+            .message-card { padding: 25px 20px; }
+            .controls { top: 10px; right: 10px; flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <!-- Floating Hearts -->
-    <div class="hearts" id="hearts"></div>
+    <div id="loginPage" style="
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: linear-gradient(45deg,#ff9a9e,#fecfef);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+">
 
-    <!-- Love Music Button -->
-    <button class="music-love" id="musicLove">
-        <i class="fas fa-music"></i>
-    </button>
+    <div style="
+        background:white;
+        padding:40px;
+        border-radius:20px;
+        text-align:center;
+        box-shadow:0 20px 40px rgba(0,0,0,0.2);
+        width:300px;
+    ">
+        <h2 style="margin-bottom:20px;">Login 💖</h2>
+
+        <input id="userId" type="text" placeholder="Enter ID"
+        style="width:100%; padding:10px; margin-bottom:15px; border-radius:10px; border:1px solid #ccc;">
+
+        <input id="password" type="password" placeholder="Enter Password"
+        style="width:100%; padding:10px; margin-bottom:15px; border-radius:10px; border:1px solid #ccc;">
+
+        <button onclick="login()" style="
+            width:100%;
+            padding:10px;
+            border:none;
+            border-radius:10px;
+            background:#ff6b9d;
+            color:white;
+            font-weight:bold;
+            cursor:pointer;
+        ">Login</button>
+
+        <p id="errorMsg" style="color:red; margin-top:10px;"></p>
+    </div>
+</div>
+
+    <!-- Floating Elements -->
+    <div class="floating-elements" id="floatingElements"></div>
+    
+    <!-- Confetti Container -->
+    <div class="confetti" id="confetti"></div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <button class="control-btn" id="musicBtn" onclick="toggleMusic()">🎵 Music</button>
+        <button class="control-btn" onclick="launchConfetti()">🎉 Confetti</button>
+    </div>
+
+    <!-- Music (Silent base64 for demo - replace with your music URL) -->
+    <audio id="bgMusic" loop preload="auto">
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
 
     <div class="container">
-        <div class="love-card">
-            <!-- Your Love's Photo - Replace URL -->
-            <div class="photo-frame">
-                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face" 
-                     alt="My Love" class="love-photo" id="lovePhoto">
-            </div>
+        <!-- Photo Section -->
+        <div class="photo-section">
+    <div class="photo-frame">
+        <img src="myphoto.jpg" style="width:100%; height:100%; object-fit:cover;">
+    </div>
 
-            <h1 class="name-title" id="loveName">My Dearest [Name]</h1>
-            <p class="birthday-greeting">🎂 Happy Birthday My Love! 🎂</p>
-            <p class="love-subtitle">To the woman who stole my heart forever 💕</p>
+    <div class="name-title">Nanduu Maa</div>
+</div>
 
-            <div class="big-heart">💖</div>
-
-            <div class="romantic-wishes">
-                <div class="wish-heart">
-                    <i class="fas fa-heart"></i> 
-                    Every day with you feels like a dream. On your birthday, I want you to know you're my everything, my forever love! 💕
-                </div>
-                <div class="wish-heart">
-                    <i class="fas fa-infinity"></i> 
-                    You've made me the happiest man alive. Today I promise to love you more fiercely, cherish you more deeply! ∞
-                </div>
-                <div class="wish-heart">
-                    <i class="fas fa-crown"></i> 
-                    My queen deserves the world! May this year bring you endless joy, success, and all the love your heart can hold! 👑
-                </div>
-                <div class="wish-heart">
-                    <i class="fas fa-prayer-hands"></i> 
-                    I pray every star in the sky grants your wishes. You're my miracle, my soulmate, my everything! ✨
-                </div>
-                <div class="wish-heart">
-                    <i class="fas fa-gift"></i> 
-                    The best gift is seeing you smile. Here's to growing old together, loving deeper each year! 🎁💑
+        <!-- Messages -->
+        <div class="messages-container">
+            <div class="message-card" onclick="toggleMessage(this)">
+                <div class="message-icon">▼</div>
+                <div class="message-header">💕 Message #1 - My First Love</div>
+                <div class="message-content">
+                    My dearest Nanduu Maa, from the moment I saw you in 8th, my heart knew you were the one. 
+                    Your smile lights up my darkest days, and your love fills my soul with endless joy. 
+                    Happy Birthday to the hendthii who stole my heart forever! 💖
                 </div>
             </div>
 
-            <div class="promise-section">
-                <div class="promise-title">My Promise to You 💍</div>
-                <div class="countdown-love">
-                    "I will love you today, tomorrow, and every day after. Happy Birthday my forever love!" 💕
+            <div class="message-card" onclick="toggleMessage(this)">
+                <div class="message-icon">▼</div>
+                <div class="message-header">🌹 Message #2 - Our Beautiful Journey</div>
+                <div class="message-content">
+                    Every moment with you is a treasure. From our first date to every late-night call, 
+                    you've made my life complete. Today, I celebrate YOU - my partner, my love, my everything nanduu maa! 🎂✨
                 </div>
             </div>
 
-            <div class="big-heart">💖💖💖</div>
+            <div class="message-card" onclick="toggleMessage(this)">
+                <div class="message-icon">▼</div>
+                <div class="message-header">💍 Message #3 - Forever Promise</div>
+                <div class="message-content">
+                    Nanduu Maa, I promise to maa u are the one in my life, and iam promissing maa i will marry u soon dr 
+                    and to build our dreams together. You're my forever, my always, my happy birthday! 
+                    I love you beyond words! 💕💕💕
+                </div>
+            </div>
 
-            <button class="share-love" onclick="shareLove()">
-                <i class="fas fa-share"></i> Share Our Love Story!
-            </button>
+            <div class="message-card special" onclick="toggleMessage(this)" style="background: linear-gradient(45deg, #ff9a9e, #fecfef);">
+                <div class="message-icon">⭐</div>
+                <div class="message-header">🎁 SURPRISE Message #4 - The Big One!</div>
+                <div class="message-content">
+                    <strong>Special Birthday Wish:</strong><br><br>
+                    Today I want you to know you're not just my love, you're my entire world my life dr. 
+                    Every beat of my heart says your name dr. Let's make this year the best one yet!<br><br>
+                    <em>"You are my sun, my moon, and all my stars" </em><br><br>
+                    💖 Happy Birthday My Hendthii! 💖
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        // 🎨 PERSONALIZATION - CHANGE THESE!
-        const LOVE_CONFIG = {
-            name: "Priya Sharma",           // 👈 YOUR LOVE'S NAME
-            photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face"  // 👈 HER PHOTO URL
-        };
+        function login() {
+    const id = document.getElementById("userId").value;
+    const pass = document.getElementById("password").value;
 
-        // Initialize romantic birthday website
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set love's name and photo
-            document.getElementById('loveName').textContent = `My Dearest ${LOVE_CONFIG.name}`;
-            document.getElementById('lovePhoto').src = LOVE_CONFIG.photo;
+    // 👉 Change this ID & password
+    const correctId = "Nanduu";
+    const correctPass = "muthan143";
 
-            // Create floating hearts
-            createFloatingHearts();
-
-            // Romantic music
-            initRomanticMusic();
-
-            // Animate wishes with love
-            animateLoveWishes();
-
-            // Trigger love confetti
-            setTimeout(loveConfetti, 1500);
-        });
-
-        function createFloatingHearts() {
-            const heartsContainer = document.getElementById('hearts');
-            const hearts = ['💖', '💕', '💗', '💓', '💞', '❤️'];
+    if (id === correctId && pass === correctPass) {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("mainPage").style.display = "block";
+    } else {
+        document.getElementById("errorMsg").innerText = "❌ Invalid ID or Password";
+    }
+}
+        // Initialize floating elements
+        function initFloatingElements() {
+            const elements = ['💖', '💕', '🌹', '✨', '🎂', '💎', '🌟'];
+            const container = document.getElementById('floatingElements');
             
             setInterval(() => {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
-                heartsContainer.appendChild(heart);
+                const item = document.createElement('div');
+                item.className = 'float-item';
+                item.innerHTML = elements[Math.floor(Math.random() * elements.length)];
+                item.style.left = Math.random() * 100 + 'vw';
+                item.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                item.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                container.appendChild(item);
                 
-                setTimeout(() => heart.remove(), 8000);
-            }, 300);
+                setTimeout(() => item.remove(), 11000);
+            }, 800);
         }
 
-        let romanticAudio;
-        function initRomanticMusic() {
-            const musicBtn = document.getElementById('musicLove');
-            let isPlaying = false;
+        // Photo upload
+        document.getElementById('photoInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('uploadedPhoto');
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                    document.getElementById('photoPlaceholder').style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
 
-            musicBtn.addEventListener('click', function() {
-                if (!romanticAudio) {
-                    romanticAudio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAo');
-                    romanticAudio.loop = true;
-                    romanticAudio.volume = 0.3;
-                }
-
-                if (isPlaying) {
-                    romanticAudio.pause();
-                    musicBtn.innerHTML = '<i class="fas fa-music"></i>';
-                    isPlaying = false;
-                } else {
-                    romanticAudio.play();
-                    musicBtn.innerHTML = '<i class="fas fa-heartbeat"></i>';
-                    isPlaying = true;
-                }
-            });
+        // Toggle message
+        function toggleMessage(card) {
+            card.classList.toggle('open');
         }
 
-        function animateLoveWishes() {
-            const wishes = document.querySelectorAll('.wish-heart');
-            wishes.forEach((wish, index) => {
-                wish.style.animationDelay = `${index * 0.3}s`;
-            });
-        }
-
-        function shareLove() {
-            const message = `💕 Happy Birthday ${LOVE_CONFIG.name}! 💕\nMy love created this special birthday website just for you!\n${window.location.href}`;
+        // Toggle music
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const btn = document.getElementById('musicBtn');
             
-            if (navigator.share) {
-                navigator.share({
-                    title: `Happy Birthday ${LOVE_CONFIG.name}! 💖`,
-                    text: message,
-                    url: window.location.href
-                });
+            if (music.paused) {
+                music.play().catch(e => console.log('Music autoplay blocked'));
+                btn.textContent = '🔇 Stop Music';
+                btn.style.background = 'linear-gradient(45deg, #ff6b9d, #e91e63)';
             } else {
-                navigator.clipboard.writeText(message).then(() => {
-                    alert('💕 Romantic birthday message copied! Share with your love!');
-                });
+                music.pause();
+                btn.textContent = '🎵 Play Music';
+                btn.style.background = 'rgba(255,255,255,0.9)';
             }
         }
 
-        function loveConfetti() {
-            for (let i = 0; i < 150; i++) {
+        // Confetti explosion
+        function launchConfetti() {
+            const confetti = document.getElementById('confetti');
+            for (let i = 0; i < 100; i++) {
                 setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.innerHTML = ['💖','💕','💗','💓','💞','❤️','🌹'][Math.floor(Math.random()*7)];
-                    confetti.style.position = 'fixed';
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    confetti.style.top = '-20px';
-                    confetti.style.fontSize = '20px';
-                    confetti.style.pointerEvents = 'none';
-                    confetti.style.zIndex = '10000';
-                    confetti.style.animation = 'loveFall 4s linear forwards';
-                    document.body.appendChild(confetti);
+                    const piece = document.createElement('div');
+                    piece.className = 'confetti-piece';
+                    piece.style.left = Math.random() * 100 + 'vw';
+                    piece.style.background = ['#ff6b9d', '#ffd93d', '#6c5ce7', '#00b894', '#e17055'][Math.floor(Math.random() * 5)];
+                    piece.style.animationDelay = Math.random() * 0.5 + 's';
+                    piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    confetti.appendChild(piece);
                     
-                   
+                    setTimeout(() => piece.remove(), 4000);
+                }, i * 20);
+            }
+        }
+
+        // Initialize
+        window.onload = function() {
+            initFloatingElements();
+            // Auto-play confetti on load
+            setTimeout(launchConfetti, 1000);
+        };
+    </script>
+</body>
+</html>
